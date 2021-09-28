@@ -5,35 +5,52 @@ function TextForm(props) {
     const buttonUpClick = ()=>{
         let newText = text.toUpperCase();
         updateText(newText);
+        if(text.length!=0){
+            props.showAlert("Converted to Uppercase", 'success')
+        }
     }
 
     const buttonLoClick = ()=>{
         let newText = text.toLowerCase();
         updateText(newText);
+        if(text.length!=0){
+            props.showAlert("Converted to Lowercase", 'success')
+        }
     }
 
     const buttonCopy = () =>{
         let textArea = document.getElementById('myText');
         textArea.select();
         navigator.clipboard.writeText(textArea.value);
+        if(text.length!=0){
+            props.showAlert("Copied to clipboard", 'success')
+        }
     }
 
     const buttonRemoveExtraSpaces = () =>{
         let newText = text.split(/[ ]+/);
         updateText(newText.join(" "));
-       
+        if(text.length!=0){
+            props.showAlert("Extra spaces removed", 'success')
+        }
     }
 
     const buttonClear = ()=>{
         let newText = "";
         updateText(newText);
+        if(text.length!=0){
+            props.showAlert("Text cleared", 'danger')
+        }
+        
     }
 
     const buttonCapsClick = ()=>{
         let firstChar = text.charAt(0);
         let newText = firstChar.toUpperCase();
         updateText(newText+text.slice(1))
-
+        if(text.length!=0){
+            props.showAlert("First letter capitalised", 'success')
+        }
     }
 
     const buttonOnChange = (event)=>{

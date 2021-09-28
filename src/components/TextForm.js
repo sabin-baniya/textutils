@@ -12,6 +12,18 @@ function TextForm(props) {
         updateText(newText);
     }
 
+    const buttonCopy = () =>{
+        let textArea = document.getElementById('myText');
+        textArea.select();
+        navigator.clipboard.writeText(textArea.value);
+    }
+
+    const buttonRemoveExtraSpaces = () =>{
+        let newText = text.split(/[ ]+/);
+        updateText(newText.join(" "));
+       
+    }
+
     const buttonClear = ()=>{
         let newText = "";
         updateText(newText);
@@ -38,6 +50,8 @@ function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={buttonUpClick}>Convert to Uppercase</button>
                 <button className="btn btn-primary mx-2" onClick={buttonLoClick}>Convert to Lowercase</button>
                 <button className="btn btn-primary mx-2" onClick={buttonCapsClick}>First Letter Caps</button>
+                <button className="btn btn-primary mx-2" onClick={buttonCopy}>Copy Text to Clipboard</button>
+                <button className="btn btn-primary mx-2" onClick={buttonRemoveExtraSpaces}>Remove Extra Spaces</button>
                 
                 <button className="btn btn-danger mx-2" onClick={buttonClear}>Clear</button>
 
